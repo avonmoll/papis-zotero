@@ -65,8 +65,12 @@ def add_from_bibtex(bib_file, out_folder=None, link=False):
                     del entry['file']
                     pdf_file = None
 
+            # Get folder name template according to config
+            folder_name = papis.config.getstring("add-folder-name")
+
             papis_add(
                 [pdf_file] if pdf_file is not None else [],
                 data=entry,
-                link=link
+                link=link,
+                folder_name=folder_name
             )
